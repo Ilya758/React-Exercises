@@ -3,7 +3,7 @@ import Categories from "../categories/Categories";
 import Search from "../search/Search";
 import "./Main.style.scss";
 import Cards from "../cards/Cards";
-import { API_KEY } from "../../constants/apiKey";
+import { PRE_URL } from "../../constants/preUrl";
 
 export default class Main extends React.Component {
   state = {
@@ -20,8 +20,7 @@ export default class Main extends React.Component {
   };
 
   componentDidMount() {
-    const query = `http://www.omdbapi.com/?apikey=${API_KEY}&s=avengers
-    `;
+    const query = `${PRE_URL}&s=avengers`;
 
     fetch(query)
       .then((response) => response.json())
