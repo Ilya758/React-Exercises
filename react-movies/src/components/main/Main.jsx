@@ -5,11 +5,12 @@ import "./Main.style.scss";
 
 export default class Main extends React.Component {
   render() {
+    const { category, cbCategory } = this.props;
+
     return (
       <>
         <main>
-          <Search />
-          <Categories />
+          <Categories category={category} cbCategory={cbCategory} />
         </main>
       </>
     );

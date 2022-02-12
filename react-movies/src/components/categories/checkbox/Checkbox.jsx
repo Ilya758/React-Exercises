@@ -8,7 +8,13 @@ export default class Checkbox extends React.Component {
       <>
         <li key={id}>
           <label>
-            <input name="categories" type="radio" value={id} checked />
+            <input
+              onChange={this.props.cbCategory}
+              name="categories"
+              type="radio"
+              value={id}
+              checked={this.props.category === id}
+            />
             <span>{`${id[0].toUpperCase()}${id.slice(1)}`}</span>
           </label>
         </li>

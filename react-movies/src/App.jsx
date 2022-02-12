@@ -5,11 +5,23 @@ import Footer from "./components/footer/Footer";
 import "./components/global/global.style.scss";
 
 export default class App extends React.Component {
+  state = {
+    movies: [],
+    query: "",
+    category: "all",
+  };
+
+  handleChangeCategory = (e) => {
+    this.setState({
+      category: e.target.value,
+    });
+  };
   render() {
     return (
       <>
         <Header />
-        <Main />
+          category={category}
+          cbCategory={this.handleChangeCategory}
         <Footer />
       </>
     );

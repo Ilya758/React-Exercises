@@ -10,7 +10,12 @@ export default class Categories extends React.Component {
       <>
         <ul className="categories">
           {categories.map((category) => (
-            <Checkbox key={category} id={category} />
+            <Checkbox
+              key={category}
+              id={category}
+              category={this.props.category}
+              cbCategory={this.props.cbCategory}
+            />
           ))}
         </ul>
       </>
