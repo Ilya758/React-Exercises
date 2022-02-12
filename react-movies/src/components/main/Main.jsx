@@ -4,6 +4,7 @@ import Search from "../search/Search";
 import "./Main.style.scss";
 import Cards from "../cards/Cards";
 import { PRE_URL } from "../../constants/preUrl";
+import Preloader from "../preloader/Preloader";
 
 export default class Main extends React.Component {
   state = {
@@ -58,7 +59,7 @@ export default class Main extends React.Component {
             cbSubmit={this.handleRequest}
           />
           <Categories category={category} cbCategory={this.handleUserAction} />
-          <Cards movies={movies} />
+          {this.state.loading ? <Preloader /> : <Cards movies={movies} />}
         </main>
       </>
     );
