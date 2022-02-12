@@ -10,6 +10,7 @@ export default class Main extends React.Component {
     movies: [],
     query: "",
     category: "all",
+    loading: false,
   };
 
   handleUserAction = (e) => {
@@ -22,11 +23,27 @@ export default class Main extends React.Component {
   componentDidMount() {
     const query = `${PRE_URL}&s=avengers`;
 
+    this.createRequest(query);
+  }
+
+  handleRequest = (e) => {
+    e.preventDefault();
+    const { category, query } = this.state;
+    const type = category === "all" ? "" : `&type=${category}`;
+    const request = `${PRE_URL}&s=${query}${type}`;
+
+    this.createRequest(request);
+  };
+
+  createRequest(query) {
+    this.setState({
+      loading: true,
+    });
+
     fetch(query)
       .then((response) => response.json())
       .then((data) => {
-        console.log(data);
-        this.setState({ movies: data });
+        this.setState({ movies: data.Search || [], loading: false });
       });
   }
 
@@ -36,7 +53,10 @@ export default class Main extends React.Component {
     return (
       <>
         <main>
-          <Search cbInput={this.handleUserAction} />
+          <Search
+            cbInput={this.handleUserAction}
+            cbSubmit={this.handleRequest}
+          />
           <Categories category={category} cbCategory={this.handleUserAction} />
           <Cards movies={movies} />
         </main>
