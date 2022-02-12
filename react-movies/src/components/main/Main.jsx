@@ -1,10 +1,13 @@
 import React from "react";
+import Search from "../search/Search";
 
 export default class Main extends React.Component {
   render() {
     return (
       <>
-        <main></main>
+        <main>
+          <Search />
+        </main>
       </>
     );
   }
