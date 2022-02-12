@@ -7,7 +7,12 @@ export default class Search extends React.Component {
       <>
         <form>
           <div className="input-field">
-            <input id="search" type="search" required />
+            <input
+              name="query"
+              id="search"
+              type="search"
+              onChange={this.props.cbInput}
+            />
             <button type="submit" className="waves-effect waves-light btn">
               Search
             </button>

@@ -10,7 +10,7 @@ export default class Checkbox extends React.Component {
           <label>
             <input
               onChange={this.props.cbCategory}
-              name="categories"
+              name="category"
               type="radio"
               value={id}
               checked={this.props.category === id}
